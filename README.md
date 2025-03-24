@@ -2,10 +2,10 @@
  
 ---
 
-### **NAME:**  
-### **DEPARTMENT:**  
-### **ROLL NO:**  
-### **DATE OF EXPERIMENT:**  
+### **NAME:**  SUDHARSAN S
+### **DEPARTMENT:**  CSE
+### **ROLL NO:**  212224040335
+### **DATE OF EXPERIMENT:**  17.03.2025
 
 ---
 
@@ -66,14 +66,38 @@ The sensor measures **temperature using a thermistor** and **humidity using a ca
 ---
 
 ## **PROGRAM (MicroPython)**  
-``` ```
+``` 
+import dht
+import machine
+import time
+
+dht_pin = machine.Pin(15, machine.Pin.IN, machine.Pin.PULL_UP)
+sensor = dht.DHT22(dht_pin)
+
+while True:
+    try:
+        sensor.measure()
+        time.sleep(0.2)
+        temp = sensor.temperature()
+        hum = sensor.humidity()
+
+        print("Temperature: {:.1f}°C".format(temp))
+        print("Humidity: {:.1f}%".format(hum))
+
+    except Exception as e:
+        print("Error reading sensor:", e)
+
+    time.sleep(2)
+```
 
 ---
 
 ## **OUTPUT:**  
  
 ---
+![Screenshot 2025-03-20 113053](https://github.com/user-attachments/assets/08dc3a14-70b8-4105-b2ac-5beed0e6809c)
 
+![Screenshot 2025-03-20 113132](https://github.com/user-attachments/assets/dfecf994-cca1-41a3-b8b8-13b32c3ec8cc)
   
 ---
 
